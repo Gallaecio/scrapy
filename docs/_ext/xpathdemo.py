@@ -1,5 +1,5 @@
 from docutils import nodes
-from sphinx.util.compat import Directive
+from docutils.parsers.rst import Directive
 from sphinx.search import SkipNode
 
 

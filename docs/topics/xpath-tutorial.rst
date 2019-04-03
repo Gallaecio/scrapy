@@ -2265,6 +2265,7 @@ single-node node-sets (you cannot select the 2nd element of a 1-element list)
           </div>
         </body>
         </html>
+
 String functions
 ----------------
 
