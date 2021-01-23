@@ -115,11 +115,14 @@ class TextResponse(Response):
             self._cached_selector = Selector(self)
         return self._cached_selector
 
-    def xpath(self, query, **kwargs):
-        return self.selector.xpath(query, **kwargs)
-
     def css(self, query):
         return self.selector.css(query)
+
+    def jmespath(self, query, **kwargs):
+        return self.selector.jmespath(query, **kwargs)
+
+    def xpath(self, query, **kwargs):
+        return self.selector.xpath(query, **kwargs)
 
     def follow(self, url, callback=None, method='GET', headers=None, body=None,
                cookies=None, meta=None, encoding=None, priority=0,
