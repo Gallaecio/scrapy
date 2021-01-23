@@ -11,12 +11,6 @@ from scrapy.http import HtmlResponse, XmlResponse
 __all__ = ['Selector', 'SelectorList']
 
 
-def _st(response, st):
-    if st is None:
-        return 'xml' if isinstance(response, XmlResponse) else 'html'
-    return st
-
-
 def _response_from_text(text, st):
     rt = XmlResponse if st == 'xml' else HtmlResponse
     return rt(url='about:blank', encoding='utf-8',
@@ -69,14 +63,15 @@ class Selector(_ParselSelector, object_ref):
             raise ValueError(f'{self.__class__.__name__}.__init__() received '
                              'both response and text')
 
-        st = _st(response, type)
+        if response is not None and type is None:
+            type = 'xml' if isinstance(response, XmlResponse) else 'html'
 
         if text is not None:
-            response = _response_from_text(text, st)
+            response = _response_from_text(text, type)
 
         if response is not None:
             text = response.text
             kwargs.setdefault('base_url', response.url)
 
         self.response = response
-        super().__init__(text=text, type=st, root=root, **kwargs)
+        super().__init__(text=text, type=type, root=root, **kwargs)
