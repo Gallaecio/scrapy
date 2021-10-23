@@ -46,6 +46,8 @@ jobs:
     - name: Run tests
       env: ${{ matrix.env }}
       run: |
+        # https://github.com/pytest-dev/py/issues/273
+        pip install git+https://github.com/pytest-dev/py.git#egg=py
         if [[ ! -z "$TOX_PIP_VERSION" ]]; then
             pip install tox-pip-version
         fi
