@@ -36,11 +36,11 @@ jobs:
     - name: Install system libraries
       run: |
         sudo apt-get update
-        # libxml2 2.9.12 from ondrej/php PPA breaks lxml so we pin it to the bionic-updates repo version
+        # libxml2 ← lxml
         # libxslt-dev ← lxml
         # rustc ← cryptography
         sudo apt-get install \
-          libxml2-dev/bionic-updates \
+          libxml2-dev \
           libxslt-dev \
           rustc
     - name: Run tests
