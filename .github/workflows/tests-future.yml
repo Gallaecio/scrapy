@@ -1,9 +1,7 @@
 name: Future
 on:
-  #schedule:
-    ## NOTE: Minutes and hours were selected randomly to avoid rush hour issues.
-    ## https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
-    #- cron:  13 7 * * *
+  schedule:
+    - cron:  13 7 * * *
   workflow_dispatch: {}
 jobs:
   tests:
