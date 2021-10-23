@@ -36,10 +36,12 @@ jobs:
     - name: Install system libraries
       run: |
         sudo apt-get update
+        # bzr ← PyDispatcher
         # libxml2 ← lxml
         # libxslt-dev ← lxml
         # rustc ← cryptography
         sudo apt-get install \
+          bzr \
           libxml2-dev \
           libxslt-dev \
           rustc
